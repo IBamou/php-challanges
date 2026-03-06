@@ -6,7 +6,7 @@ $product = "Expresso";
 $price = $unit_price * $quantity;
 
 if ($quantity > 5) { 
-    $price -= $quantity;
+    $price -= $quantity; 
 }
 
 if ($status == "student") {
