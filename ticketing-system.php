@@ -1,6 +1,6 @@
 <?php
 
-$age = 4;
+$age = 200;
 
 if ($age > 0) {
     if ($age < 12) {
@@ -16,6 +16,7 @@ if ($age > 0) {
         $price = 60;
     }
     echo "<h2>Your ticket price is $price. </h2>";
+    echo $age < 12 ? "Special: Children's Menu included!" : "";
 }
 else { echo "Invalid age"; }
 
