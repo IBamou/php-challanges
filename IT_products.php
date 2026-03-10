@@ -162,8 +162,6 @@ if (isset($_GET["category"])) {
             }
         }
     show_products_category($list) ; 
-    } else {
-        echo "invalid category";
     }
 }
 ?>
