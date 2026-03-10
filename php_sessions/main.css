@@ -1,0 +1,59 @@
+/* General form style */
+form {
+    max-width: 400px;       /* Limit width */
+    margin: 40px auto;      /* Center on page */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+/* Label styling */
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Input & textarea styling */
+form input[type="text"]{
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+/* Submit button */
+form button {
+    padding: 9px 20px;
+    background-color: #007bff; /* nice blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Error message style */
+p {
+    color: #e72222;        /* Red text */
+    font-size: 0.9em;      /* Slightly smaller */
+    margin-top: -10px;     /* Adjust spacing above */
+    margin-bottom: 10px;   /* Spacing below input */
+    font-family: Arial, sans-serif;
+}
+
+.lang-btn {
+    margin-top: 10px;
+}
