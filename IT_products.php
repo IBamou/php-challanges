@@ -9,19 +9,19 @@
 <body>
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-link"  href="/php-challanges/IT_products.php/?category=computer">Computers</a>
-    <a class="nav-link"  href="/php-challanges/IT_products.php/?category=smartphone">Smartphones</a>
-    <a class="nav-link"  href="/php-challanges/IT_products.php/?category=gaming">Gaming</a>
-    <a class="nav-link"  href="/php-challanges/IT_products.php/?category=tablet">Tablet</a>
-    <a class="nav-link"  href="/php-challanges/IT_products.php/?category=peripheral">Peripheral</a>
+    <a class="nav-link"  href="/php-challanges/IT_products.php?category=computer">Computers</a>
+    <a class="nav-link"  href="/php-challanges/IT_products.php?category=smartphone">Smartphones</a>
+    <a class="nav-link"  href="/php-challanges/IT_products.php?category=gaming">Gaming</a>
+    <a class="nav-link"  href="/php-challanges/IT_products.php?category=tablet">Tablet</a>
+    <a class="nav-link"  href="/php-challanges/IT_products.php?category=peripheral">Peripheral</a>
     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Sort</a>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="/php-challanges/IT_products.php/?category=<?= isset($_GET['category']) ? $_GET['category'] : ''?>&sort=asc">A to Z</a></li>
-      <li><a class="dropdown-item" href="/php-challanges/IT_products.php/?category=<?= isset($_GET['category']) ? $_GET['category'] : ''?>&sort=desc">Z to A</a></li>
+      <li><a class="dropdown-item" href="/php-challanges/IT_products.php?category=<?= $_GET['category'] ?? '' ?>&sort=asc">A to Z</a></li> <!-- We can also use  isset($_GET['category']) ? $_GET['category'] : '' -->
+      <li><a class="dropdown-item" href="/php-challanges/IT_products.php?category=<?= $_GET['category'] ?? '' ?>&sort=desc">Z to A</a></li>
     </ul>
   </div>
 </nav>
-<!-- ------------------------------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------s------------------------------------------------ -->
 <?php 
 $computer = [
     "Acer Aspire 5",
@@ -133,28 +133,39 @@ $peripheral = [
     "VTech Conference Phone",
     "Wacom Drawing Tablet"
 ];
-
+$products = [
+    "computer" => $computer,
+    "smartphone" => $smartphone,
+    "gaming" => $gaming,
+    "tablet" => $tablet,
+    "peripheral" => $peripheral
+];
 function show_products_category($category){
-    echo "<br>";
-    echo "<ul>";
+    echo "<br><ul>";
     foreach ($category as $product) {
-        echo "<li>$product</li>";
+        echo "<li>" . htmlspecialchars($product, ENT_QUOTES, 'UTF-8') . "</li>";
     }
     echo "</ul>";
 }
+
 if (isset($_GET["category"])) {
     $category = $_GET["category"];
-    if (isset($_GET["sort"])){
-        $sort_type = $_GET["sort"];
-        if ($sort_type == "asc"){
-            sort($$category);
-        }elseif ($sort_type == "desc"){
-            rsort($$category);
+    if (isset($products[$category])) {
+        $list = $products[$category];
+        $allowedSort = ["asc", "desc"];
+        $sort_type = $_GET["sort"] ?? null; 
+        if (in_array($sort_type, $allowedSort, true)) {
+            if ($sort_type == "asc"){
+                sort($list, SORT_STRING | SORT_FLAG_CASE); 
+            }elseif ($sort_type == "desc"){
+                rsort($list, SORT_STRING | SORT_FLAG_CASE);
+            }
         }
+    show_products_category($list) ; 
+    } else {
+        echo "invalid category";
     }
-    show_products_category($$category) ;
 }
-
 ?>
 <!-- ----------------------------------------------------------------------------------------------------------------------- -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
