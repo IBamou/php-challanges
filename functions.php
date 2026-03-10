@@ -1,7 +1,7 @@
 <?php 
 // challange 1
 function  greetUser($name) {
-    echo $name;
+    echo "Hello $name, ready to code!";
 }
 
 $name = "Ilyas\n";
@@ -41,7 +41,7 @@ if (IsAdult($age)) {
 
 // challange 4
 function  multiplyNumbers($a, $b)  {
-    if (is_int($a) && is_int($b)) {
+    if (is_numeric($a) && is_numeric($b)) {
         return $a * $b ;
 }
     return "\nError: Invalid Input\n";
@@ -57,6 +57,6 @@ function manualReverse($text) {
     }
     return $reversed_text;
 }
-$text = "mohamed";
+$text = "Ilyas";
 echo manualReverse($text);
 ?>
