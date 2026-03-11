@@ -131,7 +131,7 @@ $peripheral = [
     "TP-Link Network Adapter",
     "Ugreen Docking Station",
     "VTech Conference Phone",
-    "Wacom Drawing Tablet"
+    "Wacom Drawing Tablet",
 ];
 $products = [
     "computer" => $computer,
@@ -156,9 +156,10 @@ if (isset($_GET["category"])) {
         $sort_type = $_GET["sort"] ?? null; 
         if (in_array($sort_type, $allowedSort, true)) {
             if ($sort_type == "asc"){
-                sort($list, SORT_STRING | SORT_FLAG_CASE); 
+                sort($list, flags: SORT_NATURAL | SORT_STRING | SORT_FLAG_CASE); 
+
             }elseif ($sort_type == "desc"){
-                rsort($list, SORT_STRING | SORT_FLAG_CASE);
+                rsort($list, SORT_NATURAL | SORT_STRING | SORT_FLAG_CASE);
             }
         }
     show_products_category($list) ; 
