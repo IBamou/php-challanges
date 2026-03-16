@@ -19,7 +19,7 @@ $books = [
         "author" => "Josh Lockhart",
         "published_year" => 2022,
         "status" => "Available",
-        "price" => 300.50,
+        "price" => 30.50,
         "category"=> "PHP Core",
     ],
     [
@@ -28,7 +28,7 @@ $books = [
         "author" => "David Sklar",
         "published_year" => 2019,
         "status" => "Borrowed",
-        "price" => 180.75,
+        "price" => 50.75,
         "category"=> "PHP Core",
     ],
     [
@@ -117,8 +117,8 @@ try {
     id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(150) NOT NULL,
     author VARCHAR(100) DEFAULT 'unknown',
-    published_year YEAR NOT NULL,
-    status ENUM('Available', 'Borrowed',  'Lost'),
+    published_year YEAR DEFAULT Null,
+    status ENUM('Available', 'Borrowed',  'Lost') DEFAULT 'Available',
     price DECIMAL(10, 2)
     )";
     $db->exec($sql);
